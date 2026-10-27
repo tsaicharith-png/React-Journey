@@ -15,8 +15,15 @@
   },
   "author": "charith",
   "type": "commonjs",
-  "main": "app.js",
+  
   "scripts": {
     "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   }
 }

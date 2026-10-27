@@ -1,0 +1,22 @@
+{
+  "name": "react-journey",
+  "version": "1.0.0",
+  "description": "Learning React",
+  "keywords": [
+    "React"
+  ],
+  "homepage": "https://github.com/tsaicharith-png/React-Journey#readme",
+  "bugs": {
+    "url": "https://github.com/tsaicharith-png/React-Journey/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsaicharith-png/React-Journey.git"
+  },
+  "author": "charith",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  }
+}

@@ -3,7 +3,8 @@ import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 const Body = () => {
   const [listOfRestraunts, setListofRestraunts] = useState([]);
-  const [originalListOfRestraunts,setOriginalListOfRestraunts]=useState([]);
+  const [originalListOfRestraunts, setOriginalListOfRestraunts] = useState([]);
+  const [searchText, setSearchText] = useState("");
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,17 +18,43 @@ const Body = () => {
 
     const restaurants =
       json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-  
+
     setListofRestraunts(restaurants);
     setOriginalListOfRestraunts(restaurants);
   }
 
-  if(listOfRestraunts.length===0){
-    return <Shimmer />
+  if (listOfRestraunts.length === 0) {
+    return <Shimmer />;
   }
 
   return (
     <div className="body">
+      <div className="search">
+        <input
+          className="search-box"
+          type="text"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        ></input>
+        <button
+          className="search-btn"
+          onClick={() => {
+            const filteredList = originalListOfRestraunts.filter((res) => {
+              return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+            });
+            if(filteredList.length===0)
+            {
+              setListofRestraunts([]);
+            }
+            else
+            setListofRestraunts(filteredList);
+          }}
+        >
+          Search
+        </button>
+      </div>
       <button
         className="filter-btn"
         onClick={() => {
@@ -42,6 +69,7 @@ const Body = () => {
       <button
         className="clear-btn"
         onClick={() => {
+          setSearchText("");
           setListofRestraunts(originalListOfRestraunts);
         }}
       >
